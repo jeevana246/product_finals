@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login_page.css' %}">
+{% endblock css %}
+
+{% block title %} login {% endblock title %}
+
+{% block body %}
+<br><br>
+    <h3>Enter the username and change the password</h3>
+    <div class ="content">
+        <div class="login">
+        <form method="POST" action="forget">
+            {% csrf_token %}
+            <center>
+                <br>
+                <h4>Forget password</h3>
+            <div class="inputdata">
+                <input class="input_comp" style="font-size: large;" type="text" placeholder="Enter your username" name="username" required>
+                <br><br>
+                {{form.as_p}}
+                <input type="submit" class="btn btn-success" value="change password"> 
+            </div>
+        </form>
+        <div>
+            {% for msg in messages %}
+                <h5>{{msg}}</h5>
+            {% endfor %}
+        </div>
+            <br>
+            <a href="{% url 'register1' %}" class="btn btn-primary">Signup</a>
+            <a href="{% url 'userlogin1' %}" class="btn btn-primary">Signin</a>
+    </center>
+    
+        </div>
+    </div>
+{% endblock body %}
